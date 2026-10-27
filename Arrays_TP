@@ -1,0 +1,32 @@
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+        int size = nums.length;
+        int sum = 0;
+        boolean find = false;
+        int lp = 0, rp = size - 1;
+        int[] res = new int[2];
+        while (!find) {
+            sum = nums[lp] + nums[rp];
+            if (sum == target) {
+                res[0] = lp;
+                res[1] = rp;
+                find = true;
+            } else if (sum > target) {
+                rp--;
+            } else if (sum < target) {
+                lp++;
+            }
+        }
+        return res;
+    }
+}
+
+public class Arrays_TP {
+    public static void main(String[] args) {
+        int[] nums = { 2, 7, 11, 15 };
+        int target = 9;
+        Solution solution = new Solution();
+        int[] result = solution.twoSum(nums, target);
+        System.out.println("Indices: " + result[0] + ", " + result[1]);
+    }
+}
